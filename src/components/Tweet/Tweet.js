@@ -1,13 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import moment from "moment";
+import Avatar from "../../styles/Avatar";
 import DeleteTweet from "./DeleteTweet";
 import LikeTweet from "./LikeTweet";
+import Linkify from "linkifyjs/react";
+import React from "react";
 import Retweet from "./Retweet";
-import { CommentIcon } from "../Icons";
-import Avatar from "../../styles/Avatar";
 import TweetFile from "../../styles/TweetFile";
+import hashtag from "linkifyjs/plugins/hashtag";
+import moment from "moment";
+import styled from "styled-components";
+import { CommentIcon } from "../Icons";
+import { Link } from "react-router-dom";
 import { setDate } from "../../utils";
 
 const Wrapper = styled.div`
@@ -32,9 +34,8 @@ const Wrapper = styled.div`
     display: flex;
   }
 
-  span.tag {
+  a.body {
     color: ${(props) => props.theme.accentColor};
-    margin-right: 0.4rem;
   }
 
   div.tweet-stats {
@@ -106,9 +107,19 @@ const Tweet = ({ tweet }) => {
     createdAt,
   } = tweet;
 
-  const strList = text.split(" ");
-  const processedText = strList.filter((str) => !str.startsWith("#")).join(" ");
   const handle = user && user.handle;
+  const linkifyOptions = {
+    attributes: {
+      key: 'tag'
+    },
+    formatHref: function (value, type) {
+      if (type === 'hashtag') {
+        return 'explore?=' + value.substring(1);
+      }
+      return value;
+    },
+    className: 'body'
+  };
 
   return (
     <Wrapper>
@@ -121,23 +132,14 @@ const Tweet = ({ tweet }) => {
           <Link to={`/${handle}`}>
             <span className="username">{user && user.fullname}</span>
             <span className="secondary">{`@${handle}`}</span>
-            <span className="secondary">{moment(setDate(createdAt)).fromNow()}</span>
+          </Link>
+          &nbsp;&nbsp;
+          <Link to={`/${handle}/status/${id}`} className="secondary">
+            {moment(setDate(createdAt)).fromNow()}
           </Link>
         </div>
 
-        <Link to={`/${handle}/status/${id}`}>
-          <p>{processedText}</p>
-        </Link>
-
-        <div className="tags">
-          {tags.length
-            ? tags.map((tag) => (
-                <span key={tag} className="tag">
-                  {tag}
-                </span>
-              ))
-            : null}
-        </div>
+        <Linkify options={linkifyOptions}><p>{text}</p></Linkify>
 
         <Link to={`/${handle}/status/${id}`}>
           {files && files.length && files[0] ? (
