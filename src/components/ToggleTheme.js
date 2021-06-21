@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
 const ToggleTheme = () => {
   const localSt = localStorage.getItem("theme");
-  const [currentTheme, setCurrentTheme] = useState(localSt ? localSt : "light");
+  const [currentTheme, setCurrentTheme] = useState(localSt ? localSt : "dark");
 
   const { theme, setTheme } = useContext(ThemeContext);
 
