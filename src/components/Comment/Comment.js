@@ -57,6 +57,7 @@ const Wrapper = styled.div`
 
 const Comment = ({ comment }) => {
   const { id, text, isCommentMine, user, createdAt } = comment;
+  console.log('******', id, text, isCommentMine, user, createdAt);
 
   const handle = user && user.handle;
 
