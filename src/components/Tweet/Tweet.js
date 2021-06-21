@@ -8,6 +8,7 @@ import Retweet from "./Retweet";
 import { CommentIcon } from "../Icons";
 import Avatar from "../../styles/Avatar";
 import TweetFile from "../../styles/TweetFile";
+import { setDate } from "../../utils";
 
 const Wrapper = styled.div`
   display: flex;
@@ -120,7 +121,7 @@ const Tweet = ({ tweet }) => {
           <Link to={`/${handle}`}>
             <span className="username">{user && user.fullname}</span>
             <span className="secondary">{`@${handle}`}</span>
-            <span className="secondary">{moment(createdAt).fromNow()}</span>
+            <span className="secondary">{moment(setDate(createdAt)).fromNow()}</span>
           </Link>
         </div>
 

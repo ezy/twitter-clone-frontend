@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import Avatar from "../../styles/Avatar";
 import DeleteComment from "./DeleteComment";
+import { setDate } from "../../utils";
 
 const Wrapper = styled.div`
   display: flex;
@@ -67,7 +68,7 @@ const Comment = ({ comment }) => {
           <span className="username">{user && user.fullname}</span>
           <Link to={`/${handle}`}>
             <span className="secondary">{`@${handle}`}</span>
-            <span className="secondary">{moment(createdAt).fromNow()}</span>
+            <span className="secondary">{moment(setDate(createdAt)).fromNow()}</span>
           </Link>
           <span>{isCommentMine ? <DeleteComment id={id} /> : null}</span>
         </div>

@@ -10,6 +10,12 @@ export const sortFn = (a, b) => {
   return dateA < dateB ? 1 : -1;
 };
 
+export const setDate = (date) => {
+  const newDate = new Date(0)
+  newDate.setUTCSeconds(date / 1000)
+  return newDate;
+}
+
 export const uploadImage = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
