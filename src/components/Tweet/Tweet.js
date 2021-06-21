@@ -95,7 +95,7 @@ const Tweet = ({ tweet }) => {
   const {
     id,
     text,
-    tags,
+    // tags,
     user,
     files,
     isTweetMine,
@@ -109,9 +109,6 @@ const Tweet = ({ tweet }) => {
 
   const handle = user && user.handle;
   const linkifyOptions = {
-    attributes: {
-      key: 'tag'
-    },
     formatHref: function (value, type) {
       if (type === 'hashtag') {
         return 'explore?=' + value.substring(1);
