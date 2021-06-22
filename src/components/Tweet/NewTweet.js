@@ -66,12 +66,14 @@ const NewTweet = () => {
     if (!tweet.value) return toast("Write something");
 
     const tags = tweet.value.split(" ").filter((str) => str.startsWith("#"));
+    const mentions = tweet.value.split(" ").filter((str) => str.startsWith("@"));
 
     try {
       await newTweetMutation({
         variables: {
           text: tweet.value,
           tags,
+          mentions,
           files: tweetFiles,
         },
       });

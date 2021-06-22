@@ -1,11 +1,12 @@
 import gql from "graphql-tag";
 
 export const NEW_TWEET = gql`
-  mutation newTweet($text: String!, $files: [String!]!, $tags: [String!]!) {
-    newTweet(text: $text, files: $files, tags: $tags) {
+  mutation newTweet($text: String!, $files: [String!]!, $tags: [String!]!, $mentions: [String!]!) {
+    newTweet(text: $text, files: $files, tags: $tags, mentions: $mentions) {
       id
       text
       tags
+      mentions
       isLiked
       likesCount
       commentsCount
@@ -40,6 +41,7 @@ export const TWEET = gql`
       id
       text
       tags
+      mentions
       user {
         id
         fullname
