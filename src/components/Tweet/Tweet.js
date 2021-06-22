@@ -6,6 +6,7 @@ import React from "react";
 import Retweet from "./Retweet";
 import TweetFile from "../../styles/TweetFile";
 import hashtag from "linkifyjs/plugins/hashtag";
+import mention from "linkifyjs/plugins/mention";
 import moment from "moment";
 import styled from "styled-components";
 import { CommentIcon } from "../Icons";
