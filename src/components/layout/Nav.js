@@ -23,7 +23,7 @@ const Wrapper = styled.nav`
   font-weight: 500;
 
   .badge {
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: 50%;
     background:  ${(props) => props.theme.accentColor};
     color: white;
@@ -112,7 +112,7 @@ const Nav = () => {
   const {
     data: { user },
   } = useQuery(USER);
-  const { data, loading } = useQuery(PROFILE, {
+  const { data } = useQuery(PROFILE, {
     variables: { handle: user.handle },
   });
 
@@ -137,7 +137,7 @@ const Nav = () => {
         <li>
           <NavLink activeClassName="selected " to="/notifications">
             <NotificationIcon /> <span>Notifications</span> 
-            {data?.profile?.newMentionsCount && <span className="badge">{data?.profile?.newMentionsCount}</span>}
+            {data?.profile?.newMentionsCount !== 0 && <span className="badge">{data?.profile?.newMentionsCount}</span>}
           </NavLink>
         </li>
         <li>

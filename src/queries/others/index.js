@@ -39,3 +39,30 @@ export const USERS = gql`
     }
   }
 `;
+
+export const MENTIONS = gql`
+  query mention {
+    mentions {
+      id
+      text
+      tags
+      isLiked
+      isTweetMine
+      likesCount
+      commentsCount
+      retweetsCount
+      isRetweet
+      files {
+        id
+        url
+      }
+      user {
+        id
+        avatar
+        handle
+        fullname
+      }
+      createdAt
+    }
+  }
+`;
