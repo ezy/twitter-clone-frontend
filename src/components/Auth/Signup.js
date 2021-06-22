@@ -45,8 +45,7 @@ export default ({ changeToLogin }) => {
       handle.value === "/" ||
       handle.value === "explore" ||
       handle.value === "settings/profile" ||
-      handle.value === "nofications" ||
-      handle.value === "bookmarks"
+      handle.value === "nofications"
     ) {
       return toast.error("Your handle is not valid, try a different one");
     }

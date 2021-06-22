@@ -141,11 +141,6 @@ const Nav = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="selected" to="/bookmarks">
-            <BmIcon /> <span>Bookmarks</span>
-          </NavLink>
-        </li>
-        <li>
           <NavLink activeClassName="selected" to={`/${user.handle}`}>
             <ProfileIcon /> <span>Profile</span>
           </NavLink>
