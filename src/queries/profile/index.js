@@ -18,6 +18,7 @@ export const PROFILE = gql`
       followersCount
       followingCount
       tweetsCount
+      newMentionsCount
       bio
       tweets {
         id

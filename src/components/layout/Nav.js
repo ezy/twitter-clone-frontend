@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { Link, NavLink } from "react-router-dom";
 import MorePopup from "../MorePopup";
 import { USER } from "../../queries/client";
+import { PROFILE } from "../../queries/profile";
 import {
   Logo,
   HomeIcon,
@@ -101,6 +102,9 @@ const Nav = () => {
   const {
     data: { user },
   } = useQuery(USER);
+  const { data, loading } = useQuery(PROFILE, {
+    variables: { handle: user.handle },
+  });
 
   return (
     <Wrapper>
@@ -122,7 +126,7 @@ const Nav = () => {
         </li>
         <li>
           <NavLink activeClassName="selected " to="/notifications">
-            <NotificationIcon /> <span>Notifications</span>
+            <NotificationIcon /> <span>Notifications</span> <span>{data?.profile?.newMentionsCount}</span>
           </NavLink>
         </li>
         <li>
