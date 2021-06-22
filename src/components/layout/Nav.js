@@ -136,7 +136,8 @@ const Nav = () => {
         </li>
         <li>
           <NavLink activeClassName="selected " to="/notifications">
-            <NotificationIcon /> <span>Notifications</span> <span className="badge">{data?.profile?.newMentionsCount}</span>
+            <NotificationIcon /> <span>Notifications</span> 
+            {data?.profile?.newMentionsCount && <span className="badge">{data?.profile?.newMentionsCount}</span>}
           </NavLink>
         </li>
         <li>
