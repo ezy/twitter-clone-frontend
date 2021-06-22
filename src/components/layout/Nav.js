@@ -22,6 +22,16 @@ const Wrapper = styled.nav`
   position: fixed;
   font-weight: 500;
 
+  .badge {
+    padding: 2px 8px;
+    border-radius: 50%;
+    background:  ${(props) => props.theme.accentColor};
+    color: white;
+    top: -10px;
+    position: relative;
+    font-size: 0.7em;
+  }
+
   svg {
     width: 28px;
     height: 28px;
@@ -126,7 +136,7 @@ const Nav = () => {
         </li>
         <li>
           <NavLink activeClassName="selected " to="/notifications">
-            <NotificationIcon /> <span>Notifications</span> <span>{data?.profile?.newMentionsCount}</span>
+            <NotificationIcon /> <span>Notifications</span> <span className="badge">{data?.profile?.newMentionsCount}</span>
           </NavLink>
         </li>
         <li>
